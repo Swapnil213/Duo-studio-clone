@@ -33,7 +33,44 @@ html,body{
     z-index: 98;
     display: none;
     opacity: 0;
+    animation-play-state: paused;
     transition: opacity ease-in-out 1s;
+}
+
+#marquee-home, #marquee-work, #marquee-studio, #marquee-contact{
+    display: none;
+    opacity: 0;
+}
+
+.marquee{
+    position: absolute;
+    margin-left: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300%;
+    height: 100%;
+    overflow: hidden;
+    float: left;
+    animation: marquee 10s linear infinite;
+}
+
+#nav:hover h4{
+    animation-play-state: running;
+}
+
+@keyframes marquee {
+    0%{
+        left: 0%;
+    }
+    100%{
+        left: -1100px;
+    }
+}
+
+.marquee h1{
+    font-size: 5vw;
+    padding: 0 1vw;
 }
 
 .main{

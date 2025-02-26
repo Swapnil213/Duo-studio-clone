@@ -4,6 +4,14 @@ var boxes = document.querySelectorAll(".box");
 var navelem = document.querySelectorAll("#nav h4");
 var nav = document.querySelectorAll("#nav");
 var navDisplay = document.querySelector("#purple");
+var marlist = document.querySelectorAll(".marquee");
+
+function hide() {
+    marlist.forEach(function (elem) {
+        elem.style.display = "none"
+        elem.style.opacity = 0
+    })
+}
 
 
 document.addEventListener("mousemove", function (dets) {
@@ -108,10 +116,20 @@ boxes.forEach(function (elem) {
     })
 })
 
+
+function showMarquee(navid) {
+    var marquee = document.getElementById(`marquee-${navid}`);
+    hide();
+    marquee.style.display = "flex"
+    marquee.style.opacity = 1
+}
+
 navelem.forEach(function (elem) {
     elem.addEventListener("mouseenter", function () {
         navDisplay.style.display = "block";
         navDisplay.style.opacity = 1;
+        var navid = elem.getAttribute("id");
+        showMarquee(navid);
     })
     elem.addEventListener("mouseleave", function () {
         navDisplay.style.display = "none";
