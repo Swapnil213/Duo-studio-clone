@@ -1,10 +1,14 @@
 var cursor = document.querySelector(".cursor");
 var main = document.querySelector(".main");
+var boxes = document.querySelectorAll(".box");
+var navelem = document.querySelectorAll("#nav h4");
+var nav = document.querySelectorAll("#nav");
+var navDisplay = document.querySelector("#purple");
 
 
-main.addEventListener("mousemove", function (dets) {
-    cursor.style.left = dets.x + "px";
-    cursor.style.top = dets.y + "px";
+document.addEventListener("mousemove", function (dets) {
+    cursor.style.left = dets.x + 15 + "px";
+    cursor.style.top = dets.y + 15 + "px";
 })
 
 function loco() {
@@ -85,4 +89,32 @@ var tl3 = gsap.timeline({
 
 tl3.to(".main", {
     backgroundColor: "#0f0d0d"
+})
+
+boxes.forEach(function (elem) {
+    elem.addEventListener("mouseenter", function () {
+        var image = elem.getAttribute("data-image");
+        cursor.style.width = "300px"
+        cursor.style.height = "250px"
+        cursor.style.borderRadius = "0"
+        cursor.style.backgroundImage = `url(${image})`
+    })
+    elem.addEventListener("mouseleave", function () {
+        cursor.style.width = "20px"
+        cursor.style.height = "20px"
+        cursor.style.borderRadius = "50%"
+        cursor.style.backgroundImage = `none`
+        cursor.style.backgroundColor = "#edbfff"
+    })
+})
+
+navelem.forEach(function (elem) {
+    elem.addEventListener("mouseenter", function () {
+        navDisplay.style.display = "block";
+        navDisplay.style.opacity = 1;
+    })
+    elem.addEventListener("mouseleave", function () {
+        navDisplay.style.display = "none";
+        navDisplay.style.opacity = 0;
+    })
 })
